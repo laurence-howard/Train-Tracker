@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Train-Tracker/precache-manifest.3236482b65443348d110ede4acbf304f.js"
+  "/Train-Tracker/precache-manifest.18b3bf65705d91e55da092d8cb1b90b5.js"
 );
 
 workbox.clientsClaim();
