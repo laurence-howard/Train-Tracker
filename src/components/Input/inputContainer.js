@@ -29,7 +29,6 @@ class InputContainer extends Component {
         this.setState({searchedStations : 'load'});
         if(this.props.state.selection.origin.st_code != '' && this.props.state.selection.destination.st_code != '' && this.props.state.selection.time != ''){
             var url = "https://transportapi.com/v3/uk/train/station/"+ this.props.state.selection.origin.st_code +"/" + moment(this.props.state.selection.time).format("YYYY-MM-DD") + "/"+ moment(this.props.state.selection.time).format("HH:mm") +"/timetable.json?app_id="+ process.env.REACT_APP_TRANSPORT_ID +"&app_key="+ process.env.REACT_APP_TRANSPORT_KEY +"&calling_at=" +  this.props.state.selection.destination.st_code +"&train_status=passenger";
-            console.log(url);
             fetch(url)
                 .then((response) => {
                     if(response.ok){
