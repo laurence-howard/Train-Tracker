@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/train-tracker/precache-manifest.0f47676bbc19d4dce3589c9854f878f2.js"
+  "/Train-Tracker/precache-manifest.3236482b65443348d110ede4acbf304f.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/train-tracker/index.html", {
+workbox.routing.registerNavigationRoute("/Train-Tracker/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
