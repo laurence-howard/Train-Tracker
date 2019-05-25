@@ -24,15 +24,17 @@ class InputSelection extends Component {
         var stations_content;
         if(this.stations.length > 0){
             stations_content = (
-                this.stations.map((single =>
-                    <div className="search-selection-single" onClick={e => this.clickedValue(single)}>
-                        <p>{single["Station Name"]}</p>
-                    </div>
-                ))
+                <div className="search-selection-container">
+                    {this.stations.map((single =>
+                        <div className="search-selection-single" onClick={e => this.clickedValue(single)}>
+                            <p>{single["Station Name"]}</p>
+                        </div>
+                    ))}
+                </div>
             );
         }
         return (
-            <div className="search-selection-container">
+            <div className="search-selection-container-outer">
                 {stations_content}
             </div>
         );

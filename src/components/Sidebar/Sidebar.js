@@ -12,23 +12,24 @@ const mapStateToProps = (state) => {
 class Sidebar extends Component {
 
     render() {
-
+        let width = window.innerWidth;
         let routes;
 
-        if(this.props.state.selectedStations){
+        if(this.props.state.selectedStations.stations.length > 0){
             routes = (
-                this.props.state.selectedStations.map(route => 
+                this.props.state.selectedStations.stations.map(route => 
                     <SidebarSingle route={route} />   
                 )
             )
         }
 
         return (
-           <div className="sidebar-container">
-                <div>
+            <div className="sidebar-container-outer">
+                <div className={"sidebar-overlay " + (this.props.state.sidebarToggle.sidebarToggle ? 'active' : '')}></div>
+                <div className={"sidebar-container " + (this.props.state.sidebarToggle.sidebarToggle ? 'active' : '')}>
                     {routes}
                 </div>
-           </div>
+            </div>
         );
     }
 }

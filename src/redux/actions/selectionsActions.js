@@ -1,3 +1,5 @@
+import { resolve } from "url";
+
 export const addOrigin_Search = (content, station_code) => ({
     type : 'ADD_ORIGIN_STATION',
     payload: {
@@ -30,13 +32,22 @@ export const clear_Search = () => ({
 
 let route_ID = -1;
 
-export const addSearched_Route = (service_ID, train_id, origin_station, destination_station) => ({
-    type : 'ADD_SEARCH_ROUTE',
-    payload: {
-        route_ID : ++route_ID,
-        service_ID,
-        train_id,
-        origin_station,
-        destination_station
+export function addSearched_Route(data, origin, destination) {
+    return  {
+        type : 'ADD_SEARCH_ROUTE',
+            payload: fetch(data.service_timetable.id+"&live=true")
+                        .then((data) => {
+                            return data.json();
+                        })
+                        .then ((details) => {
+                            return  {
+                                origin_station : origin,
+                                destination_station : destination,
+                                route_ID : ++route_ID,
+                                detail : details, 
+                                data
+                            }
+                        })
     }
-})
+}
+

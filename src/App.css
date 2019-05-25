@@ -1,16 +1,49 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+html, body, p, a {
+  font-family: 'Cabin', sans-serif;
+}
+
 .app-outer{
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
+.sidebar-container-outer {
+  flex-grow : 1;
+  max-width: 25vw;
+}
 
 .sidebar-container {
   flex-grow: 1;
   background-color: #02182B;
-  max-width: 25vw;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar-overlay {
+  position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: -1;
+    opacity: 0;
+    transition: all 
+}
+
+.active.sidebar-overlay {
+  z-index: 2;
+  opacity: 1;
 }
 
 .main-container {
@@ -21,4 +54,39 @@
 
 .rdtCounters{
   display: flex;
+}
+
+
+.popup-toggle p {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.main-content-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media(max-width: 991px){
+  .sidebar-container {
+    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    right: -400px;
+    transition: all 300ms ease-in;
+    padding-top: 70px;
+  }
+
+  .sidebar-container.active {
+    right : 0;
+    z-index: 5;
+  }
+  
+  .main-container {
+   width: 100%;
+   max-width: 100%;
+  }
 }

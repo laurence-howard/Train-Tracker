@@ -1,5 +1,64 @@
-.route-single-text{
+.route-single {
     color: white;
-    text-align: center;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    transition: all 300ms ease-in;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    &.active {
+        background-color: white;
+        color: #02182B;
+        @media(min-width: 992px){
+            border-right: 3px solid #02182B;
+        }
+
+        .route-singe-remove-container{
+            background-color: #02182B;
+    
+    
+            .route-single-remove {
+                color: white;
+            }
+        }
+    }
+
+    .route-singe-text-container {
+        flex-grow: 1;
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        @media (min-width:992px){
+            height: 69px;
+        }
+
+        .route-single-text{
+            text-align: center;
+            margin-bottom: 0;
+            font-size: 16px;
+            line-height: 16px;
+        }
+    }
+
+    .route-singe-remove-container{
+        width: 40px;
+        padding: 7px 0;
+        border-radius: 4px;
+        margin-right: 10px;
+        text-align: center;
+        background-color: white;
+        transition: all 300ms ease-in;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+
+        .route-single-remove {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: #02182B;
+        }
+    }
 }

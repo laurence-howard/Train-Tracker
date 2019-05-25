@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {addSearched_Route} from '../../redux/actions/actions';
+import {addSearched_Route, changeSelectedRoute} from '../../redux/actions/actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -11,9 +11,8 @@ const mapStateToProps = (state) => {
 class routeSelect extends Component {
 
     route_click = (e) =>{
-        console.log(e);
+        this.props.addSearched_Route(e, this.props.state.selection.origin.st_name, e.destination_name);
         this.props.route_clear();
-        this.props.addSearched_Route(e.service, e.train_uid, this.props.state.selection.origin.st_name, e.destination_name)
     }
     render(){
 
@@ -21,8 +20,9 @@ class routeSelect extends Component {
         stations = (
             <div className="searched-stations-outer">
                 {this.props.searchedStations.map((station) => 
-                    <div className="searched-station-single">
-                        <h2 className="searched-station-name" value={station} onClick={() => this.route_click(station)}>{station.destination_name} {station.aimed_departure_time}</h2>
+                    <div className="searched-station-single" value={station} onClick={() => this.route_click(station)}>
+                        <p className="searched-station-name">{this.props.state.selection.origin.st_name} to {this.props.state.selection.destination.st_name}</p>
+                        <p className="searched-station-subtext">Departing: {station.aimed_departure_time}</p>
                     </div>
                 )}
             </div>
@@ -35,4 +35,4 @@ class routeSelect extends Component {
     }
 }
 
-export default connect(mapStateToProps, {addSearched_Route})(routeSelect);
+export default connect(mapStateToProps, {addSearched_Route, changeSelectedRoute})(routeSelect);
